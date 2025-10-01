@@ -90,3 +90,44 @@ Fields:
    * created_by: UUID
    * updated_by:UUID
    * is_active: bool
+
+# Medication Table
+Store medication details prescribed to a child
+
+id : UUID (Primary Key)
+child_id : UUID ( FK to Child )
+doctor_id : UUID (FK to USer)
+medication_name: str
+dosage: str
+instructions: str
+start_date: date
+end_date: date
+created_date: datetime
+updated_date: datetime
+created_by : UUID
+updated_by: UUID
+is_active : bool
+
+# Education/Exercise Table 
+* id : UUID (Primary Key)
+* child_id : UUID(FK to Child)
+* educator_id: UUId(FK to User)
+* plan_type : str (Enum : education, exercise, tutorial)
+* description: str
+* start_date: date
+* end_date: date
+* created_date : datetime
+* updated_date: datetime
+* created_by: UUID
+* updated_by: UUID
+* is_active: bool
+
+# Summary 
+1) User : All roles
+2) Child : Linked to parent
+3) Screening: Linked to child, identifies condition
+4) Condition: Linked to screening, questions, recommendations
+5) Question: Linked to condtition
+6) Recommendation: Linked to condition
+7) Service Coordination: Links admin, parent, doctor, educator,child
+8) Medication/Education/Exercise : Linked to child, doctor/educator
