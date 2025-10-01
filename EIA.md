@@ -13,7 +13,7 @@ Fields:
 * updated_by: UUID (FK to User)
 * is_active : bool (for soft delete)
 
-  # Child Details Table
+# Child Details Table
 
   Stores Information about the children registered by parents
 
@@ -30,7 +30,7 @@ Fields:
   * updated_by: UUID
   * is_active: bool
 
-    # Screening Table
+# Screening Table
     Stores Screening results for each child
 
     Fields:
@@ -44,3 +44,49 @@ Fields:
     * created_by: UUID
     * updated_by:UUID
     * is_active: bool
+
+# Condition Table
+
+Defines possible conditions/disorders.
+   Fields: 
+   * id: UUID (Primary Key)
+   * condition_id: UUID (FK to Condition)
+   * question_text: str
+   * created_date: datetime
+   * updated_date: datetime
+   * created_by: UUID
+   * updated_by: UUID
+   * is_active: bool
+
+# Recomendation Table
+
+Stores recommendation (medication, education, exercise) for each condition.
+
+Fields: 
+   * id : UUID (Primary Key)
+   * condition_id: UUID (FK to Condition)
+   * type: str(Enum: medication,education,tutorial,exercise)
+   * description: str
+   * created_date: datetime
+   * updated_date: datetime
+   * created_by: UUID
+   * updated_by: UUID
+   * is_active: bool
+
+# Service Coordination Table
+
+Tracks coordination between admin, parents, doctorsm educators.
+
+Fields: 
+   * id: UUID (Primary Key)
+   * child_id: UUID (FK to Child)
+   * admin_id: UUID (FK to User)
+   * doctor_id: UUID(FK to User, nullable)
+   * educator_id: UUID (FK to User, nullable)
+   * status: str(Enum: pending, active,completed)
+   * notes: str
+   * created_date: datetime
+   * updated_date: datetime
+   * created_by: UUID
+   * updated_by:UUID
+   * is_active: bool
